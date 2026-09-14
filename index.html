@@ -22,7 +22,7 @@
   section{padding:6rem 1.5rem;}
   .wrap{max-width:1200px;margin:0 auto;}
   h1,h2,h3{font-weight:700;line-height:1.05;}
-  .eyebrow{color:var(--amber);font-weight:600;letter-spacing:2px;text-transform:uppercase;font-size:0.78rem;margin-bottom:0.8rem;}
+  .eyebrow{color:var(--amber);font-weight:500;font-size:0.92rem;margin-bottom:1rem;font-family:'Space Grotesk',monospace;}
   .eyebrow::before{content:'// ';}
   [data-anchor]{scroll-margin-top:90px;}
 
@@ -51,7 +51,9 @@
   .hero-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
   .hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--navy),transparent 15%);}
   .hero h1{font-size:clamp(2.2rem,4.4vw,3.6rem);margin-bottom:1.4rem;}
-  .hero h1 em{font-style:normal;color:var(--amber);}
+  .hero h1 em{font-style:normal;}
+  .hero-text > *{opacity:0;}
+  .hero-photo{clip-path:inset(0 0 0 100%);}
   .hero p{font-size:1.05rem;color:var(--gray-300);max-width:460px;margin-bottom:2rem;}
   .btn-row{display:flex;gap:1rem;flex-wrap:wrap;}
   .btn{padding:1rem 1.8rem;border-radius:2px;font-weight:700;font-size:0.9rem;display:inline-block;transition:transform .2s;}
@@ -319,7 +321,13 @@
 
 <div class="demo-badge">Example build by <a href="https://intellisystemsagency.com" target="_blank">Intellisystems</a></div>
 
+<script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
 <script>
+  // One deliberate load-in moment: text panel staggers in, photo wipes open — mirrors the split-screen layout itself
+  const { animate, stagger } = Motion;
+  animate('.hero-photo', { clipPath: ['inset(0 0 0 100%)', 'inset(0 0 0 0%)'] }, { duration: 0.9, easing: 'ease-out' });
+  animate('.hero-text > *', { opacity: [0, 1], x: [-16, 0] }, { delay: stagger(0.1, { start: 0.3 }), duration: 0.6, easing: 'ease-out' });
+
   const nav=document.getElementById('nav');
   window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
   document.getElementById('mobileToggle').onclick=()=>document.getElementById('mobileMenu').classList.add('open');
