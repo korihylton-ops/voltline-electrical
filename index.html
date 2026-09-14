@@ -327,6 +327,7 @@
   const { animate, stagger } = Motion;
   animate('.hero-photo', { clipPath: ['inset(0 0 0 100%)', 'inset(0 0 0 0%)'] }, { duration: 0.9, easing: 'ease-out' });
   animate('.hero-text > *', { opacity: [0, 1], x: [-16, 0] }, { delay: stagger(0.1, { start: 0.3 }), duration: 0.6, easing: 'ease-out' });
+  setTimeout(() => { document.querySelectorAll('.hero-text > *').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; }); document.querySelector('.hero-photo').style.clipPath = 'inset(0 0 0 0%)'; }, 2000);
 
   const nav=document.getElementById('nav');
   window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
