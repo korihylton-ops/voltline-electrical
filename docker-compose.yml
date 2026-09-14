@@ -1,0 +1,16 @@
+services:
+  site:
+    build: .
+    container_name: voltline-electrical
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.voltline-electrical.rule=Host(`electrical.intellisystemsagency.com`)"
+      - "traefik.http.routers.voltline-electrical.entrypoints=websecure"
+      - "traefik.http.routers.voltline-electrical.tls.certresolver=le"
+      - "traefik.http.services.voltline-electrical.loadbalancer.server.port=80"
+networks:
+  traefik:
+    external: true

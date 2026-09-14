@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voltline Electrical | Licensed Electricians, Melbourne</title>
+<meta name="description" content="Voltline Electrical — switchboards, rewiring, solar and commercial electrical work across Melbourne. Licensed electricians, same-day call-outs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0d1b2a; --navy-light:#1b3149; --amber:#f5a623; --amber-light:#ffc857;
+    --white:#ffffff; --gray-100:#f4f6f8; --gray-300:#cfd8e3; --gray-500:#8896a6; --gray-700:#3d4a59;
+    --font:'Outfit',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font);color:var(--navy);background:var(--white);line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  section{padding:5rem 1.5rem;}
+  .wrap{max-width:1160px;margin:0 auto;}
+  h1,h2,h3{font-weight:800;line-height:1.1;}
+  .eyebrow{color:var(--amber);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:0.8rem;margin-bottom:0.8rem;}
+  [data-anchor]{scroll-margin-top:90px;}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 1.5rem;transition:all .3s;background:transparent;}
+  .nav.scrolled{background:var(--white);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:0.8rem 1.5rem;}
+  .nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo{font-weight:800;font-size:1.3rem;color:var(--white);display:flex;align-items:center;gap:0.5rem;}
+  .nav.scrolled .nav-logo{color:var(--navy);}
+  .nav-logo span{color:var(--amber);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--white);font-weight:500;font-size:0.95rem;}
+  .nav.scrolled .nav-links a{color:var(--navy);}
+  .nav-cta{background:var(--amber);color:var(--navy)!important;padding:0.7rem 1.4rem;border-radius:8px;font-weight:700;}
+  .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .mobile-toggle span{width:26px;height:3px;background:var(--white);border-radius:2px;}
+  .nav.scrolled .mobile-toggle span{background:var(--navy);}
+  .mobile-menu{display:none;position:fixed;inset:0;background:var(--navy);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{color:var(--white);font-size:1.5rem;font-weight:600;}
+  .mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--white);font-size:2rem;cursor:pointer;}
+
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;color:var(--white);overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,27,42,.7),rgba(13,27,42,.92)),url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=80') center/cover;z-index:-1;}
+  .hero-inner{max-width:1160px;margin:0 auto;padding:8rem 1.5rem 3rem;width:100%;}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.5rem);margin-bottom:1.2rem;}
+  .hero h1 em{font-style:normal;color:var(--amber);}
+  .hero p{font-size:1.2rem;color:var(--gray-300);max-width:640px;margin-bottom:2rem;}
+  .btn-row{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn{padding:1rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;display:inline-block;transition:transform .2s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--amber);color:var(--navy);}
+  .btn-outline{border:2px solid var(--white);color:var(--white);}
+  .hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.2);flex-wrap:wrap;}
+  .hero-stat-num{font-size:2.2rem;font-weight:800;color:var(--amber);}
+  .hero-stat-label{font-size:0.8rem;color:var(--gray-300);text-transform:uppercase;letter-spacing:1px;}
+
+  .about{background:var(--gray-100);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;}
+  .about-grid img{border-radius:16px;}
+  .about h2{font-size:2.4rem;margin-bottom:1.2rem;}
+  .about p{color:var(--gray-700);margin-bottom:1rem;}
+  .feature-list{list-style:none;margin-top:1.5rem;display:grid;gap:0.8rem;}
+  .feature-list li{display:flex;gap:0.7rem;align-items:flex-start;font-weight:600;}
+  .feature-list li::before{content:'✓';background:var(--amber);color:var(--navy);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;margin-top:2px;}
+
+  .section-head{text-align:center;max-width:640px;margin:0 auto 3.5rem;}
+  .section-head h2{font-size:2.4rem;}
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+  .service-card{background:var(--gray-100);padding:2rem 1.5rem;border-radius:14px;border:1px solid var(--gray-300);transition:transform .2s,box-shadow .2s;}
+  .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.08);border-color:var(--amber);}
+  .service-icon{font-size:2rem;margin-bottom:1rem;}
+  .service-card h3{font-size:1.1rem;margin-bottom:0.5rem;}
+  .service-card p{color:var(--gray-700);font-size:0.9rem;}
+
+  .pricing{background:var(--navy);color:var(--white);}
+  .pricing .section-head h2{color:var(--white);}
+  .pricing .section-head p{color:var(--gray-300);}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+  .price-card{background:var(--navy-light);padding:2.5rem 2rem;border-radius:16px;text-align:center;border:2px solid transparent;}
+  .price-card.featured{border-color:var(--amber);position:relative;}
+  .price-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--navy);padding:0.3rem 1rem;border-radius:20px;font-size:0.75rem;font-weight:700;text-transform:uppercase;}
+  .price-card h3{font-size:1.2rem;margin-bottom:0.5rem;}
+  .price-amount{font-size:2.5rem;font-weight:800;color:var(--amber);margin:1rem 0;}
+  .price-amount span{font-size:1rem;color:var(--gray-300);font-weight:400;}
+  .price-list{list-style:none;margin:1.5rem 0;text-align:left;display:grid;gap:0.6rem;}
+  .price-list li{font-size:0.9rem;color:var(--gray-300);}
+  .price-list li::before{content:'— ';color:var(--amber);}
+  .price-note{text-align:center;color:var(--gray-500);font-size:0.85rem;margin-top:2rem;}
+
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+  .gallery-grid img{border-radius:12px;aspect-ratio:1;object-fit:cover;cursor:pointer;transition:transform .3s;}
+  .gallery-grid img:hover{transform:scale(1.03);}
+
+  .faq{background:var(--gray-100);}
+  .faq-list{max-width:800px;margin:0 auto;}
+  .faq-item{background:var(--white);border-radius:12px;margin-bottom:1rem;overflow:hidden;border:1px solid var(--gray-300);}
+  .faq-q{padding:1.3rem 1.6rem;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+  .faq-q::after{content:'+';font-size:1.5rem;color:var(--amber);transition:transform .2s;}
+  .faq-item.open .faq-q::after{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 1.6rem;}
+  .faq-item.open .faq-a{max-height:300px;padding-bottom:1.3rem;}
+  .faq-a p{color:var(--gray-700);font-size:0.95rem;}
+
+  .cta-banner{background:linear-gradient(135deg,var(--navy),var(--navy-light));text-align:center;color:var(--white);}
+  .cta-banner h2{font-size:2.2rem;margin-bottom:1rem;}
+  .cta-banner .btn-primary{background:var(--amber);color:var(--navy);}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+  .contact-card{background:var(--gray-100);padding:2rem;border-radius:14px;text-align:center;}
+  .contact-card h3{margin-bottom:0.5rem;}
+  form{display:grid;gap:1rem;}
+  input,textarea,select{width:100%;padding:0.9rem 1rem;border:1px solid var(--gray-300);border-radius:8px;font-family:var(--font);font-size:0.95rem;}
+  textarea{resize:vertical;min-height:100px;}
+  .form-btn{background:var(--amber);color:var(--navy);border:none;padding:1rem;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;width:100%;}
+
+  footer{background:var(--navy);color:var(--gray-300);padding:3rem 1.5rem 1.5rem;text-align:center;font-size:0.9rem;}
+  footer a{color:var(--gray-300);}
+  .footer-links{display:flex;justify-content:center;gap:1.5rem;margin:1rem 0;flex-wrap:wrap;}
+
+  .demo-badge{position:fixed;bottom:16px;right:16px;background:var(--navy);color:var(--white);padding:0.6rem 1rem;border-radius:8px;font-size:0.75rem;z-index:150;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+  .demo-badge a{color:var(--amber);font-weight:700;}
+
+  @media(max-width:900px){
+    .nav-links{display:none;}
+    .mobile-toggle{display:flex;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .price-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .hero h1{margin-bottom:1rem;}
+    .hero-stats{margin-top:2rem;padding-top:1.5rem;}
+    .hero-stat-num{font-size:1.5rem;}
+    .hero-stat-label{font-size:0.65rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Voltline <span>Electrical</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a Call-Out</a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&times;</button>
+  <a href="#services">Services</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Book a Call-Out</a>
+</div>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Licensed Electricians — Melbourne Metro</div>
+    <h1>Electrical work done <em>right</em>, the <em>first</em> time.</h1>
+    <p>Switchboards, rewiring, solar and commercial electrical for Melbourne homes and businesses. Same-day call-outs, upfront pricing.</p>
+    <div class="btn-row">
+      <a href="#contact" class="btn btn-primary">Book a Call-Out</a>
+      <a href="#services" class="btn btn-outline">Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">12+</div><div class="hero-stat-label">Years Licensed</div></div>
+      <div><div class="hero-stat-num">2,000+</div><div class="hero-stat-label">Jobs Completed</div></div>
+      <div><div class="hero-stat-num">Same-Day</div><div class="hero-stat-label">Call-Outs Available</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about" data-anchor>
+  <div class="wrap about-grid">
+    <div>
+      <img src="https://images.unsplash.com/photo-1660330589827-da8ab7dd3c02?w=900&q=80" alt="Electrician working on switchboard panel" loading="lazy">
+    </div>
+    <div>
+      <div class="eyebrow">Why Voltline</div>
+      <h2>Fully licensed, fully insured, no shortcuts.</h2>
+      <p>Voltline Electrical has been servicing Melbourne homes and businesses for over 12 years. Every job — from a single power point to a full switchboard upgrade — is compliant, certified and backed by a written guarantee.</p>
+      <p>We quote upfront before we touch a single wire, so there's never a surprise number on the invoice.</p>
+      <ul class="feature-list">
+        <li>Registered electrical contractor (REC licensed)</li>
+        <li>Upfront, fixed pricing on every job</li>
+        <li>24/7 emergency call-outs</li>
+        <li>Compliance certificate on every job</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="services" data-anchor>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What We Do</div>
+      <h2>Electrical services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🔌</div><h3>Switchboard Upgrades</h3><p>Safety switch and switchboard upgrades to current AS/NZS standards.</p></div>
+      <div class="service-card"><div class="service-icon">🏠</div><h3>Rewiring</h3><p>Full and partial home rewiring for older properties and renovations.</p></div>
+      <div class="service-card"><div class="service-icon">☀️</div><h3>Solar &amp; Battery</h3><p>Solar panel installation, battery storage and system upgrades.</p></div>
+      <div class="service-card"><div class="service-icon">🏢</div><h3>Commercial Electrical</h3><p>Fit-outs, compliance upgrades and ongoing maintenance for businesses.</p></div>
+      <div class="service-card"><div class="service-icon">💡</div><h3>Lighting Installation</h3><p>Downlights, LED upgrades and outdoor lighting design and install.</p></div>
+      <div class="service-card"><div class="service-icon">🚨</div><h3>Emergency Repairs</h3><p>24/7 emergency call-outs for faults, outages and safety hazards.</p></div>
+      <div class="service-card"><div class="service-icon">🔥</div><h3>Smoke Alarm Compliance</h3><p>Interconnected smoke alarm installation to current legal requirements.</p></div>
+      <div class="service-card"><div class="service-icon">📋</div><h3>Safety Inspections</h3><p>Pre-purchase and periodic electrical safety inspections with full reports.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing" data-anchor>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Indicative Pricing</div>
+      <h2>Example packages</h2>
+      <p>Every job is quoted upfront — these are typical ranges to help you budget.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>Standard Call-Out</h3>
+        <div class="price-amount">$120<span>/call-out</span></div>
+        <ul class="price-list">
+          <li>First 30 minutes included</li>
+          <li>Fault-finding &amp; diagnosis</li>
+          <li>Same-day availability</li>
+          <li>Written report</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tag">Most Popular</div>
+        <h3>Switchboard Upgrade</h3>
+        <div class="price-amount">$850<span>+</span></div>
+        <ul class="price-list">
+          <li>Full safety switch upgrade</li>
+          <li>Compliance certificate</li>
+          <li>Same-week installation</li>
+          <li>2-year workmanship warranty</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>Commercial Fit-Out</h3>
+        <div class="price-amount">POA</div>
+        <ul class="price-list">
+          <li>Full compliance sign-off</li>
+          <li>Project timeline management</li>
+          <li>After-hours scheduling available</li>
+          <li>Dedicated site electrician</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note">Prices shown are indicative examples for illustration — every quote is confirmed before work begins.</p>
+  </div>
+</section>
+
+<section id="gallery" data-anchor>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Recent Work</div>
+      <h2>Gallery</h2>
+    </div>
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&q=75" alt="Electrician working on panel" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1660330589827-da8ab7dd3c02?w=500&q=75" alt="Electrical meter box installation" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&q=75" alt="Switchboard wiring detail" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1660330589827-da8ab7dd3c02?w=500&q=75" alt="Electrical safety inspection" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq" data-anchor>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Questions</div>
+      <h2>Frequently Asked</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q">Are you licensed for solar installation?</div><div class="faq-a"><p>Yes — our electricians hold Clean Energy Council accreditation for solar PV and battery storage installation.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Do you offer emergency call-outs?</div><div class="faq-a"><p>Yes, 24/7 for genuine electrical emergencies such as sparking, burning smells or total outages.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Will I get a compliance certificate?</div><div class="faq-a"><p>Every job that requires one includes a Certificate of Electrical Safety at completion, at no extra cost.</p></div></div>
+      <div class="faq-item"><div class="faq-q">How much notice do you need?</div><div class="faq-a"><p>Standard call-outs are usually available same-day or next-day. Larger jobs like rewiring are scheduled 1-2 weeks out.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Do you work on older homes?</div><div class="faq-a"><p>Yes — a large part of our work is bringing older wiring up to current safety standards without unnecessary demolition.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="wrap">
+    <h2>Need an electrician you can rely on?</h2>
+    <p style="margin-bottom:1.5rem;">Same-day call-outs, upfront pricing, compliance guaranteed.</p>
+    <a href="#contact" class="btn btn-primary">Book a Call-Out</a>
+  </div>
+</section>
+
+<section id="contact" data-anchor>
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Get In Touch</div>
+      <h2 style="font-size:2.2rem;margin-bottom:1.5rem;">Book a call-out</h2>
+      <form action="https://formsubmit.co/example@voltlineelectrical.com.au" method="POST">
+        <input type="text" name="name" placeholder="Full name" required>
+        <input type="tel" name="phone" placeholder="Phone number" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <select name="service">
+          <option value="">Select a service</option>
+          <option>Switchboard Upgrade</option>
+          <option>Rewiring</option>
+          <option>Solar &amp; Battery</option>
+          <option>Emergency Repair</option>
+          <option>Other</option>
+        </select>
+        <textarea name="details" placeholder="Tell us what's going on..."></textarea>
+        <button type="submit" class="form-btn">Book a Call-Out</button>
+      </form>
+    </div>
+    <div style="display:grid;gap:1.2rem;align-content:start;">
+      <div class="contact-card"><h3>📞 Phone</h3><p>(03) 5550 5678</p></div>
+      <div class="contact-card"><h3>✉️ Email</h3><p>jobs@voltlineelectrical.com.au</p></div>
+      <div class="contact-card"><h3>📍 Service Area</h3><p>Melbourne Metro &amp; Surrounds</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="nav-logo" style="justify-content:center;color:var(--white);">Voltline <span>Electrical</span></div>
+  <div class="footer-links">
+    <a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a><a href="/admin.html">Admin</a>
+  </div>
+  <p>&copy; 2026 Voltline Electrical. Licensed Electrical Contractor. REC 00000.</p>
+</footer>
+
+<div class="demo-badge">Example build by <a href="https://intellisystemsagency.com" target="_blank">Intellisystems</a></div>
+
+<script>
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+  document.getElementById('mobileToggle').onclick=()=>document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mobileClose').onclick=()=>document.getElementById('mobileMenu').classList.remove('open');
+  document.querySelectorAll('.mobile-menu a').forEach(a=>a.onclick=()=>document.getElementById('mobileMenu').classList.remove('open'));
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-q').onclick=()=>{
+      const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!isOpen)item.classList.add('open');
+    };
+  });
+</script>
+</body>
+</html>
